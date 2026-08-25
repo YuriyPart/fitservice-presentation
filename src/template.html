@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Франшиза FIT SERVICE — автосервис №1 в России и Казахстане</title>
+<meta name="description" content="Презентация франшизы FIT SERVICE: 346 станций, 168 городов, 2 700 000 клиентов. Как открыть автосервис под брендом №1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#FE4F01;
+  --black:#0A0A0A;
+  --blue:#0A60C7;
+  --white:#FFFFFF;
+  --grey:#9AA0A8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{height:100%}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  background:var(--black);
+  color:var(--white);
+}
+.deck{
+  height:100svh;
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+}
+.slide{
+  position:relative;
+  height:100svh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  overflow:hidden;
+}
+h1,h2,.disp{font-family:'Oswald','Inter',Arial,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+
+/* ---------- chrome ---------- */
+.chrome{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 28px;pointer-events:none;
+  font-size:13px;font-weight:700;
+  color:#fff;transition:color .3s;
+}
+body.lightbg .chrome{color:#16181d}
+.chrome .mid{font-weight:400;letter-spacing:.12em}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--orange);width:0%;z-index:60;transition:width .3s ease}
+.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:10px}
+.dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);display:block;transition:.25s}
+body.lightbg .dots a{background:rgba(0,0,0,.25)}
+.dots a.on{background:var(--orange);transform:scale(1.5)}
+.hint{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:50;color:#fff;font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.65;animation:bounce 2s infinite;pointer-events:none}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+.slide.seen .rv{opacity:1;transform:none}
+
+/* ---------- shared ---------- */
+.wrap{max-width:1280px;margin:0 auto;padding:0 48px;height:100%;display:flex;flex-direction:column;justify-content:center}
+.plus{position:absolute;color:rgba(255,255,255,.4);font-size:15px}
+.plus.tl{top:14px;left:16px}.plus.bl{bottom:14px;left:16px}.plus.br{bottom:14px;right:16px}
+.kicker{color:var(--orange);font-weight:800;letter-spacing:.06em}
+.gradcard{
+  background:linear-gradient(112deg,#1a1c22 0%,#3a4150 55%,#94a4c4 130%);
+  border-radius:26px;padding:34px 38px;
+}
+
+/* ---------- slide 1 cover ---------- */
+.s1{display:grid;grid-template-columns:32% 68%;background:var(--black)}
+.s1 .left{background:var(--orange);display:flex;align-items:center;padding:0 4%}
+.s1 .left h1{font-size:clamp(28px,3.2vw,50px);line-height:1.12}
+.s1 .left h1 span{display:block;font-size:.62em;font-weight:500}
+.s1 .right{position:relative;display:flex;flex-direction:column}
+.s1 .art{position:relative;flex:1;display:flex;align-items:center;justify-content:center}
+.s1 .art img{width:min(62%,640px);height:auto;display:block}
+.s1 .plate{
+  position:absolute;left:6%;top:22%;transform:translateY(-50%);
+  background:var(--orange);color:#fff;padding:14px 34px;
+  font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-weight:700;font-size:clamp(30px,4vw,62px);letter-spacing:.03em;
+}
+.s1 .stats{display:flex;gap:.6em;justify-content:center;padding:34px 20px 46px;font-weight:700;font-size:clamp(14px,1.4vw,20px);flex-wrap:wrap}
+.s1 .stats i{font-style:normal;color:var(--grey);padding:0 .5em}
+.s1 .tag{position:absolute;top:20px;left:24px;color:var(--orange);font-weight:800;letter-spacing:.3em;font-size:12px}
+
+/* ---------- slide 2 why ---------- */
+.s2{background:var(--black)}
+.s2 .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.s2 h2{color:var(--orange);font-size:clamp(26px,2.6vw,42px);margin-bottom:18px}
+.s2 .sub{color:#cfd3d8;margin-bottom:30px;font-size:15px;max-width:34em}
+.s2 h3{font-family:'Oswald','Arial Narrow',Arial,sans-serif;text-transform:uppercase;font-weight:500;font-size:clamp(17px,1.5vw,24px);margin-bottom:26px}
+.chart{display:flex;align-items:flex-end;gap:9%;height:min(30vh,260px);padding-bottom:8px;border-bottom:1px solid #333;max-width:440px}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;height:100%}
+.bar .col{flex:0 0 auto}
+.bar .col{background:#0A60C7;border-radius:4px 4px 0 0;transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.7,.3,1)}
+.slide.seen .bar .col{transform:scaleY(1)}
+.bar:nth-child(1) .col{transition-delay:.2s}
+.bar:nth-child(2) .col{transition-delay:.85s}
+.bar:nth-child(3) .col{transition-delay:1.5s}
+.bar .v,.bar .pct{opacity:0;transition:opacity .45s ease}
+.slide.seen .bar:nth-child(1) .v{opacity:1;transition-delay:.8s}
+.slide.seen .bar:nth-child(2) .v,.slide.seen .bar:nth-child(2) .pct{opacity:1;transition-delay:1.45s}
+.slide.seen .bar:nth-child(3) .v,.slide.seen .bar:nth-child(3) .pct{opacity:1;transition-delay:2.1s}
+.bar.hot .col{background:var(--orange)}
+.bar .v{font-weight:800;font-size:14px;margin-bottom:8px}
+.bar .col{position:relative}
+.bar .pct{position:absolute;top:14px;left:0;right:0;text-align:center;font-size:20px;font-weight:700;color:#fff}
+.bar .yr{color:var(--grey);font-size:13px;margin-top:10px}
+.s2 .num{color:var(--orange);font-weight:800;font-size:clamp(30px,3vw,46px);margin-bottom:6px}
+.s2 .gradcard p{color:#eef1f5;font-size:14.5px;line-height:1.55}
+.s2 .gradcard + .gradcard{margin-top:22px}
+.s2 .gc-t{font-weight:700;font-size:16px;margin-bottom:10px}
+
+/* ---------- slide 3 stats ---------- */
+.s3{background:var(--orange)}
+.s3 h2{font-size:clamp(40px,6.4vw,96px);line-height:1;margin-bottom:6vh}
+.s3 h2 small{display:block;font-size:.38em;font-weight:500;letter-spacing:.14em}
+.s3 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5vh 32px}
+.s3 .st b{display:block;font-size:clamp(24px,2.6vw,42px);font-weight:800;margin-bottom:6px}
+.s3 .st span{font-size:14.5px;opacity:.92}
+
+/* ---------- slide 4 digital ---------- */
+.s4{background:var(--black);display:flex;flex-direction:column}
+.s4 .band{background:var(--orange);padding:5vh 0 4vh}
+.s4 .band .in{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.s4 .band .logo{font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.6vw,72px);letter-spacing:.02em}
+.s4 .band .right{font-weight:800;font-size:clamp(16px,1.6vw,24px);text-align:right;text-transform:uppercase}
+.s4 .cards{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;max-width:1280px;margin:0 auto;padding:4vh 48px 5vh;width:100%}
+.s4 .c .n{color:var(--grey);font-weight:700;font-size:13px;margin-bottom:6px}
+.s4 .c h4{font-size:15px;font-weight:800;text-transform:uppercase;margin-bottom:8px;min-height:2.4em}
+.s4 .c p{color:#c8ccd2;font-size:13px;line-height:1.5;margin-bottom:14px;min-height:4.5em}
+.s4 .c img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block}
+
+/* ---------- slide 5 brand ---------- */
+.s5{background:var(--blue)}
+.s5 .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:center;height:100%}
+.s5 h2{font-size:clamp(26px,2.8vw,44px);margin-bottom:12px}
+.s5 .sub{color:#cfe0f5;margin-bottom:5vh;font-size:15px}
+.s5 .grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5vh 40px}
+.s5 .st b{display:block;font-size:clamp(24px,2.4vw,38px);font-weight:800;margin-bottom:6px}
+.s5 .st span{font-size:14px;color:#e2ecfa;line-height:1.45;display:block;max-width:20em}
+.s5 .phone{position:relative;height:100%}
+.s5 .phone img{position:absolute;bottom:-10vh;right:0;width:min(38vw,600px)}
+
+/* ---------- slide 6 partners ---------- */
+.s6{background:#fff;color:#111}
+.s6 .n{color:#d6d6d6;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-size:clamp(40px,4.6vw,72px);font-weight:500;line-height:1}
+.s6 h2{font-size:clamp(22px,2.5vw,40px);margin:8px 0 16px}
+.s6 .sub{color:#555;font-size:15px;line-height:1.6;max-width:52em;margin-bottom:4vh}
+.s6 .lgrid{display:grid;grid-template-columns:repeat(4,1fr);width:100%;max-width:1060px;background:#fff}
+.s6 .lc{display:flex;align-items:center;justify-content:center;height:max(13vh,104px)}
+.s6 .lc img{max-height:52%;max-width:64%;width:auto;height:auto;display:block}
+
+/* ---------- slide 7 app ---------- */
+.s7{background:var(--black)}
+.s7 .cols{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center;height:100%}
+.s7 h2{font-size:clamp(24px,2.4vw,38px);line-height:1.2;margin-bottom:10px}
+.s7 h2 em{font-style:normal;color:var(--orange)}
+.s7 .sub{color:#c8ccd2;font-size:15px;margin-bottom:5vh}
+.s7 .st{margin-bottom:3.6vh}
+.s7 .st b{color:var(--orange);font-size:clamp(24px,2.4vw,36px);font-weight:800;display:block;margin-bottom:4px}
+.s7 .st span{color:#dfe2e6;font-size:14.5px;line-height:1.45;display:block;max-width:24em}
+.s7 .phones{position:relative;display:flex;align-items:center;justify-content:center;height:100svh;overflow:hidden}
+.s7 .phones img{height:min(86vh,920px);width:auto;max-width:100%;object-fit:contain}
+
+/* ---------- slide 8 parts ---------- */
+.s8{background:#fff;color:#111;display:grid;grid-template-columns:1.05fr .95fr}
+.s8 .left{display:flex;flex-direction:column;justify-content:center;padding:0 6% 0 10%}
+.s8 .crumb{position:absolute;top:20px;left:10%;font-size:13px;font-weight:600;color:#333;text-transform:uppercase}
+.s8 .n{color:#d6d6d6;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-size:clamp(40px,4.6vw,72px);font-weight:500;line-height:1}
+.s8 h2{font-size:clamp(24px,2.6vw,40px);margin:8px 0 5vh}
+.s8 .rossko{width:min(46%,300px);margin-bottom:2.5vh}
+.s8 .cap{color:#333;font-size:15.5px;line-height:1.55;max-width:30em;margin-bottom:5vh}
+.s8 .big{font-size:clamp(40px,4.6vw,72px);font-weight:800;letter-spacing:.01em;line-height:1;margin-bottom:10px}
+.s8 .big+span{color:#444;font-size:15px}
+.s8 .right img{width:100%;height:100svh;object-fit:cover;display:block}
+
+/* ---------- slide 9 support ---------- */
+.s9{background:#fff;color:#111}
+.s9 .cols{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;height:100%}
+.s9 h2{font-size:clamp(24px,2.4vw,38px);margin-bottom:18px}
+.s9 .sub{color:#333;font-size:15px;line-height:1.6;max-width:30em;margin-bottom:4vh}
+.s9 .owner{display:flex;align-items:center;gap:22px}
+.s9 .owner img{width:min(11vw,150px);aspect-ratio:1;border-radius:50%;object-fit:cover}
+.s9 .owner b{font-size:17px;display:block}
+.s9 .owner span{color:#666;font-size:13.5px}
+.s9 .gridwrap{position:relative}
+.s9 .road{position:absolute;left:-4%;top:-3%;width:108%;height:106%;z-index:0;pointer-events:none}
+.s9 .road .base{fill:none;stroke:#EEEFF1;stroke-width:30px;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.s9 .road .dash{fill:none;stroke:#FE4F01;stroke-width:2.5px;vector-effect:non-scaling-stroke;stroke-dasharray:9 11;stroke-linecap:round}
+.slide.seen .s9road-anim{animation:roadmove 7s linear infinite}
+@keyframes roadmove{to{stroke-dashoffset:-80}}
+.s9 .grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:3.2vh 26px}
+.s9 .b{text-align:center}
+.s9 .b img{width:min(9.5vw,120px);aspect-ratio:1;border-radius:50%;object-fit:cover;margin-bottom:8px;border:6px solid #fff}
+.s9 .b i{font-style:normal;display:block;color:var(--orange);font-weight:800;font-size:12px;margin-bottom:3px}
+.s9 .b span{font-size:12.5px;line-height:1.35;display:block;color:#222}
+
+/* ---------- slide 10 standards ---------- */
+.s10{display:grid;grid-template-columns:1.15fr .85fr;background:var(--black)}
+.s10 .left{display:flex;flex-direction:column;justify-content:center;padding:0 4% 0 6%}
+.s10 .n{color:#3a3a3a;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-size:clamp(40px,4.6vw,72px);font-weight:500;line-height:1}
+.s10 h2{font-size:clamp(20px,2.1vw,34px);margin:8px 0 4px}
+.s10 .kick{color:var(--orange);font-weight:700;text-transform:uppercase;font-size:15px;margin-bottom:3vh}
+.s10 .cap{color:#d6dade;font-size:15px;margin-bottom:3vh}
+.s10 img{display:block;width:min(88%,620px);margin:1vh auto 0}
+.s10 .right{background:var(--blue);display:flex;align-items:center;padding:6vh 5%}
+.s10 ol{list-style:none;display:flex;flex-direction:column;gap:1.8vh;width:100%}
+.s10 ol li{display:grid;grid-template-columns:38px 1fr;gap:14px;font-size:15px;line-height:1.45;align-items:baseline;padding-bottom:1.8vh;border-bottom:1px solid rgba(255,255,255,.25)}
+.s10 ol li:last-child{border-bottom:none;padding-bottom:0}
+.s10 ol b{font-weight:800}
+
+/* ---------- slide 11 support chat ---------- */
+.s11{background:var(--black)}
+.s11 .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;height:100%}
+.s11 h2{font-size:clamp(26px,2.6vw,42px);margin-bottom:16px}
+.s11 .sub{color:#c8ccd2;font-size:15.5px;line-height:1.6;max-width:28em;margin-bottom:5vh}
+.s11 .avail{color:var(--orange);font-family:'Oswald','Arial Narrow',Arial,sans-serif;text-transform:uppercase;font-weight:600;font-size:clamp(18px,1.8vw,28px);margin-bottom:3.6vh}
+.s11 .it{display:grid;grid-template-columns:34px 1fr;gap:14px;margin-bottom:2.6vh;font-size:15px;max-width:26em}
+.s11 .it b{font-weight:800}
+.s11 .phone{display:flex;justify-content:center;align-items:center}
+.s11 .phone img{height:min(80vh,860px);width:auto;max-width:100%;object-fit:contain;-webkit-mask-image:linear-gradient(180deg,#000 86%,transparent 99%);mask-image:linear-gradient(180deg,#000 86%,transparent 99%)}
+
+/* ---------- slide 12 questions ---------- */
+.s12{background:var(--black)}
+.s12 h2{color:var(--orange);font-size:clamp(28px,3.2vw,50px);line-height:1.1;margin-bottom:10px}
+.s12 .sub{color:#cfd3d8;font-size:15px;margin-bottom:4.5vh}
+.s12 .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:4.5vh}
+.s12 .q{display:flex;align-items:center;gap:26px;min-height:15vh}
+.s12 .q b{color:var(--orange);font-size:clamp(24px,2.4vw,34px);font-weight:800}
+.s12 .q span{font-weight:800;text-transform:uppercase;font-size:clamp(14px,1.35vw,19px);line-height:1.35}
+.s12 .cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.btn{
+  display:inline-block;background:var(--orange);color:#fff;text-decoration:none;
+  font-weight:800;text-transform:uppercase;font-size:14.5px;letter-spacing:.03em;
+  padding:18px 34px;border-radius:12px;transition:.2s;border:none;cursor:pointer
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(254,79,1,.35)}
+.s12 .note{color:var(--grey);font-size:13px}
+
+/* ---------- slide 13 team ---------- */
+.s13{background:var(--orange)}
+.s13 h2{font-size:clamp(26px,3vw,46px);margin-bottom:8px}
+.s13 .sub{font-size:15px;margin-bottom:4vh}
+.s13 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{
+  background:#fff;color:#16181d;border-radius:16px;padding:12px 12px 18px;
+  box-shadow:0 14px 34px rgba(80,25,0,.25);
+  display:flex;flex-direction:column;
+}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;margin-bottom:14px}
+.card .reg{color:var(--orange);font-weight:800;font-size:10.5px;text-transform:uppercase;line-height:1.35;margin:0 6px 8px;min-height:2.7em}
+.card .nm{font-weight:800;font-size:17px;line-height:1.2;margin:0 6px 12px}
+.card .ct{margin:0 6px;display:flex;flex-direction:column;gap:5px;font-size:13px}
+.card .ct a{color:#2a2d33;text-decoration:none;border-bottom:1px solid transparent;transition:.15s;word-break:break-all}
+.card .ct a:hover{color:var(--orange)}
+.card .ct a.tel{font-weight:800;color:#16181d;font-size:14px}
+.s13 .foot{margin-top:3.6vh;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;opacity:.9;flex-wrap:wrap;gap:10px}
+
+/* ---------- slide 14 anketa ---------- */
+.s14{background:var(--black)}
+.s14 .wrap{max-width:1080px}
+.s14 .kick14{color:var(--grey);font-weight:700;letter-spacing:.25em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+.s14 h2{font-size:clamp(30px,3.6vw,56px);line-height:1.08;margin-bottom:14px}
+.s14 h2 em{font-style:normal;color:var(--orange)}
+.s14 .sub{color:#cfd3d8;font-size:16px;line-height:1.6;max-width:36em;margin-bottom:4.5vh}
+.s14 .panel{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:4.5vh}
+.s14 .pt{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.s14 .pt b{color:var(--orange);font-size:clamp(22px,2.2vw,30px);font-weight:800;line-height:1}
+.s14 .pt h4{font-size:16.5px;font-weight:800;text-transform:uppercase;margin-bottom:6px}
+.s14 .pt p{color:#c8ccd2;font-size:14px;line-height:1.55}
+.s14 .cta-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.s14 .btn{font-size:16px;padding:20px 40px}
+.s14 .note{color:var(--grey);font-size:13px;max-width:24em;line-height:1.5}
+
+
+/* ---------- short desktop screens ---------- */
+@media (min-width:881px) and (max-height:720px){
+  .chart{height:min(24vh,200px)}
+  .s12 .q{min-height:11vh}
+  .s12 h2{font-size:clamp(24px,2.6vw,38px)}
+  .s13 .grid{gap:14px}
+  .card img{margin-bottom:10px}
+  .card .nm{font-size:15px;margin-bottom:8px}
+  .card .ct{font-size:12px}
+  .s14 h2{font-size:clamp(26px,3vw,44px)}
+  .s3 h2{margin-bottom:4vh}
+}
+/* ---------- very large screens ---------- */
+@media (min-width:1700px){
+  .wrap{max-width:1440px}
+  .s4 .cards,.s4 .band .in{max-width:1440px}
+  body{font-size:17px}
+}
+/* ---------- tablet landscape (1024-1180) ---------- */
+@media (min-width:881px) and (max-width:1180px) and (orientation:landscape){
+  .wrap{padding:0 36px}
+  .s13 .grid{gap:12px}
+  .card .ct{font-size:11.5px}
+  .card .nm{font-size:14px}
+  .s2 .cols{gap:36px}
+  .s9 .b img{width:min(8.5vw,100px)}
+  .s10 ol li{font-size:13.5px}
+}
+/* ---------- phone landscape ---------- */
+@media (max-height:500px) and (orientation:landscape){
+  .slide{height:auto;min-height:100svh}
+  .deck{scroll-snap-type:y proximity}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:880px), (max-width:1040px) and (orientation:portrait){
+  .deck{scroll-snap-type:y proximity}
+  .slide{height:auto;min-height:100svh}
+  .wrap{padding:76px 22px 60px}
+  .dots,.hint{display:none}
+  .chrome{padding:14px 18px;font-size:11px}
+  .s1{grid-template-columns:1fr;min-height:100svh}
+  .s1 .left{padding:86px 24px 30px}
+  .s1 .plate{position:static;transform:none;display:inline-block;margin:14px auto 0;font-size:28px;padding:8px 18px}
+  .s1 .art{padding:10px 0;flex-direction:column;gap:6px}
+  .s1 .art img{width:min(78%,420px)}
+  .s1 .stats{padding:16px 12px 40px}
+  .s2 .cols,.s5 .cols,.s7 .cols,.s9 .cols,.s11 .cols{grid-template-columns:1fr;gap:34px;height:auto}
+  .chart{height:200px}
+  .s3 .grid{grid-template-columns:1fr 1fr;gap:26px 18px}
+  .s4 .cards{grid-template-columns:1fr 1fr;gap:18px;padding:26px 22px 46px}
+  .s4 .c p{min-height:0}
+  .s4 .c h4{min-height:0}
+  .s4 .band .in{padding:0 22px}
+  .s5 .phone{height:auto;display:flex;justify-content:center}
+  .s5 .phone img{position:static;width:min(88%,420px);margin-bottom:-16vh}
+  .s7 .phones img{height:auto;max-height:64vh}
+  .s6 .lgrid{grid-template-columns:repeat(2,1fr)}
+  .s6 .lc{height:88px}
+  .s9 .road{display:none}
+  .s8{grid-template-columns:1fr}
+  .s8 .left{padding:86px 24px 40px}
+  .s8 .crumb{display:none}
+  .s8 .right img{height:44svh}
+  .s9 .grid{grid-template-columns:repeat(3,1fr);gap:20px 12px}
+  .s9 .b img{width:76px}
+  .s9 .owner img{width:96px}
+  .s10{grid-template-columns:1fr}
+  .s10 .left{padding:86px 24px 34px}
+  .s10 .right{padding:34px 24px 46px}
+  .s11 .phone img{height:auto;max-height:64vh}
+  .s12 .grid{grid-template-columns:1fr;gap:14px}
+  .s14 .panel{grid-template-columns:1fr;gap:22px}
+  .s12 .q{min-height:0;gap:18px}
+  .s13 .grid{grid-template-columns:1fr 1fr;gap:14px}
+  .card .reg{min-height:0}
+}
+@media (max-width:520px){
+  .s13 .grid{grid-template-columns:1fr}
+  .s9 .grid{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<header class="chrome">
+  <span></span>
+  <span class="mid">ФРАНШИЗА</span>
+  <span>FIT SERVICE</span>
+</header>
+<nav class="dots" id="dots" aria-label="Слайды"></nav>
+<div class="hint" id="hint">Листайте вниз ↓</div>
+
+<main class="deck" id="deck">
+
+<!-- 1. COVER -->
+<section class="slide s1" data-n="1">
+  <div class="left">
+    <span class="tag">ФРАНШИЗА · 2026</span>
+    <h1 class="rv">Автосервис №1 <span>в России и Казахстане</span></h1>
+  </div>
+  <div class="right">
+    <div class="art">
+      <img src="{{wheel.jpg}}" alt="FIT SERVICE" class="rv d1">
+      <div class="plate rv d2">FIT SERVICE</div>
+    </div>
+    <div class="stats rv d3"><b>346 станций</b><i>·</i><b>168 городов</b><i>·</i><b>2 700 000 клиентов</b></div>
+  </div>
+  <span class="plus bl">+</span><span class="plus br">+</span>
+</section>
+
+<!-- 2. WHY CAR SERVICE -->
+<section class="slide s2" data-n="2">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2 class="rv">Почему именно автосервис?</h2>
+        <p class="sub rv d1">обслуживание автомобиля — базовая и постоянная потребность</p>
+        <h3 class="rv d1">Рост средних затрат на ремонт автомобиля</h3>
+        <div class="chart rv d2">
+          <div class="bar"><div class="v">21 837 ₽</div><div class="col" style="height:56%"></div><div class="yr">2023</div></div>
+          <div class="bar"><div class="v">27 555 ₽</div><div class="col" style="height:71%"><div class="pct">+26%</div></div><div class="yr">2024</div></div>
+          <div class="bar hot"><div class="v">34 443 ₽</div><div class="col" style="height:89%"><div class="pct">+25%</div></div><div class="yr">2025</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="gradcard rv d2">
+          <div class="num">47 483 794</div>
+          <div class="gc-t">автомобилей в России</div>
+          <p>рост пробегов и старение автопарка: автовладелец вкладывает деньги в обслуживание действующего автомобиля, а не в покупку нового.</p>
+        </div>
+        <div class="gradcard rv d3">
+          <div class="num">на 25%</div>
+          <p>увеличились средние затраты на ремонт автомобиля за последний год.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus br">+</span>
+</section>
+
+<!-- 3. WHY FIT -->
+<section class="slide s3" data-n="3">
+  <div class="wrap">
+    <h2 class="rv"><small>Почему</small>FIT SERVICE ?</h2>
+    <div class="grid">
+      <div class="st rv d1"><b>18 лет</b><span>присутствия на рынке</span></div>
+      <div class="st rv d1"><b>220+</b><span>партнеров в сети</span></div>
+      <div class="st rv d2"><b>346</b><span>цифровых автосервисов</span></div>
+      <div class="st rv d2"><b>2 700 000</b><span>клиентов</span></div>
+      <div class="st rv d3"><b>2013 г.</b><span>дата запуска франчайзинга</span></div>
+      <div class="st rv d3"><b>3 500+</b><span>сотрудников сети</span></div>
+      <div class="st rv d4"><b>168</b><span>города присутствия</span></div>
+      <div class="st rv d4"><b>2 страны</b><span>Россия и Казахстан</span></div>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus bl">+</span>
+</section>
+
+<!-- 4. DIGITAL NETWORK -->
+<section class="slide s4" data-n="4">
+  <div class="band">
+    <div class="in">
+      <div class="logo rv">FIT SERVICE</div>
+      <div class="right rv d1">Сеть цифровых<br>автосервисов</div>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="c rv d1"><div class="n">01</div><h4>Инновации в сфере</h4><p>все диагностики авто с фото и видеоотчетом</p><img src="{{ph_diag.jpg}}" alt="Диагностика"></div>
+    <div class="c rv d2"><div class="n">02</div><h4>Мобильное приложение</h4><p>9 из 10 клиентов пользуются мобильным приложением</p><img src="{{ph_app.jpg}}" alt="Приложение"></div>
+    <div class="c rv d3"><div class="n">03</div><h4>Цифровое управление</h4><p>софт позволяет управлять бизнесом из любой точки мира</p><img src="{{ph_car.jpg}}" alt="Управление"></div>
+    <div class="c rv d4"><div class="n">04</div><h4>Онлайн обучение</h4><p>возможность обучать сотрудников даже удаленно</p><img src="{{ph_edu.jpg}}" alt="Обучение"></div>
+  </div>
+</section>
+
+<!-- 5. BRAND -->
+<section class="slide s5" data-n="5">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2 class="rv">Бренд, который приводит клиентов</h2>
+        <p class="sub rv d1">Вы открываетесь не с нуля: клиенты уже ищут FIT SERVICE в вашем городе</p>
+        <div class="grid">
+          <div class="st rv d1"><b>900 000</b><span>пользователей ежемесячно на сайтах компании</span></div>
+          <div class="st rv d2"><b>Самое большое</b><span>количество запросов в Яндекс и Google</span></div>
+          <div class="st rv d3"><b>125 000+</b><span>запросов на Яндекс.Картах и в 2ГИС за месяц</span></div>
+          <div class="st rv d4"><b>более 80 000</b><span>клиентов каждый месяц доверяют нам свой автомобиль</span></div>
+        </div>
+      </div>
+      <div class="phone rv d2"><img src="{{phone_blue.webp}}" alt="FIT SERVICE в соцсетях"></div>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus bl">+</span>
+</section>
+
+<!-- 6. PARTNERS -->
+<section class="slide s6" data-n="6" data-light="1">
+  <div class="wrap">
+    <div class="n rv">06</div>
+    <h2 class="rv d1">Клиенты приходят из популярных приложений</h2>
+    <p class="sub rv d1">Услуги FIT SERVICE встроены в экосистемы банков, АЗС, страховых и онлайн-сервисов. Это дополнительный поток клиентов на вашу станцию, который вам не нужно покупать.</p>
+    <div class="lgrid rv d2">
+      <div class="lc"><img src="{{lg_gazpromneft.webp}}" alt="Газпромнефть"></div>
+      <div class="lc"><img src="{{lg_tbank.webp}}" alt="Т-Банк"></div>
+      <div class="lc"><img src="{{lg_rosneft.webp}}" alt="Роснефть"></div>
+      <div class="lc"><img src="{{lg_autospot.webp}}" alt="Autospot"></div>
+      <div class="lc"><img src="{{lg_yandexpro.webp}}" alt="Яндекс Про"></div>
+      <div class="lc"><img src="{{lg_vtb.webp}}" alt="ВТБ"></div>
+      <div class="lc"><img src="{{lg_flocktory.webp}}" alt="Flocktory"></div>
+      <div class="lc"><img src="{{lg_lukoil.webp}}" alt="Лукойл"></div>
+      <div class="lc"><img src="{{lg_vsk.webp}}" alt="ВСК"></div>
+      <div class="lc"><img src="{{lg_t2.webp}}" alt="t2"></div>
+      <div class="lc"><img src="{{lg_gazprombonus.webp}}" alt="Газпром Бонус"></div>
+      <div class="lc"><img src="{{lg_alfabank.webp}}" alt="Альфа-Банк"></div>
+      <div class="lc"><img src="{{lg_halva.webp}}" alt="Халва"></div>
+      <div class="lc"><img src="{{lg_x5.webp}}" alt="X5 Group"></div>
+      <div class="lc"><img src="{{lg_houmbank.webp}}" alt="Хоум Банк"></div>
+      <div class="lc"><img src="{{lg_insapp.webp}}" alt="Insapp"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. APP -->
+<section class="slide s7" data-n="7">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2 class="rv">Мобильное приложение <em>и бонусная программа</em></h2>
+        <p class="sub rv d1">ваш автосервис всегда в телефоне клиента</p>
+        <div class="st rv d1"><b>9 из 10</b><span>клиентов сети пользуются мобильным приложением</span></div>
+        <div class="st rv d2"><b>+41%</b><span>средний чек при использовании бонусной системы</span></div>
+        <div class="st rv d3"><b>4,8</b><span>рейтинг приложения при 4 400+ оценках</span></div>
+      </div>
+      <div class="phones rv d2"><img src="{{phone_garage.webp}}" alt="Приложение FIT SERVICE"></div>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus bl">+</span>
+</section>
+
+<!-- 8. PARTS -->
+<section class="slide s8" data-n="8" data-light="1">
+  <div class="left">
+    <span class="crumb">Почему у вас получится?</span>
+    <div class="n rv">08</div>
+    <h2 class="rv d1">Запчасти всегда в наличии</h2>
+    <img class="rossko rv d2" src="{{rossko.png}}" alt="ROSSKO">
+    <p class="cap rv d2">прямой канал поставки запасных частей от крупнейшего дистрибьютора</p>
+    <div class="big rv d3">1 500 000</div>
+    <span class="rv d3">наименований запчастей всегда в наличии</span>
+  </div>
+  <div class="right"><img src="{{warehouse.jpg}}" alt="Склад ROSSKO"></div>
+</section>
+
+<!-- 9. SUPPORT MAP -->
+<section class="slide s9" data-n="9" data-light="1">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="n rv" style="color:#d6d6d6;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-size:clamp(40px,4.6vw,72px);font-weight:500;line-height:1">09</div>
+        <h2 class="rv d1">Поддержка на всех этапах</h2>
+        <p class="sub rv d1">Управляющая компания FIT SERVICE — бизнес-партнер, который берет на себя ответственность и обязанности, не имея доли в вашем бизнесе</p>
+        <div class="owner rv d2">
+          <img src="{{owner.jpg}}" alt="Владелец FIT SERVICE">
+          <div><b>Владелец FIT SERVICE</b><span>вы — в центре всей системы поддержки</span></div>
+        </div>
+      </div>
+      <div class="gridwrap">
+      <svg class="road" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="base" d="M 2 12 H 82 C 97 12 97 46 82 46 H 18 C 3 46 3 80 18 80 H 98"/>
+        <path class="dash s9road-anim" d="M 2 12 H 82 C 97 12 97 46 82 46 H 18 C 3 46 3 80 18 80 H 98"/>
+      </svg>
+      <div class="grid">
+        <div class="b rv d1"><img src="{{c_consult.jpg}}" alt=""><i>01</i><span>Личный бизнес-консультант</span></div>
+        <div class="b rv d1"><img src="{{c_tech.jpg}}" alt=""><i>02</i><span>Техническая служба</span></div>
+        <div class="b rv d2"><img src="{{c_merch.jpg}}" alt=""><i>03</i><span>Производство фирменной атрибутики</span></div>
+        <div class="b rv d2"><img src="{{c_care.jpg}}" alt=""><i>04</i><span>Служба заботы о клиентах</span></div>
+        <div class="b rv d2"><img src="{{c_edu.jpg}}" alt=""><i>05</i><span>Центр обучения</span></div>
+        <div class="b rv d3"><img src="{{c_call.jpg}}" alt=""><i>06</i><span>Контакт-центр</span></div>
+        <div class="b rv d3"><img src="{{c_it.jpg}}" alt=""><i>07</i><span>Разработка IT-инфраструктуры</span></div>
+        <div class="b rv d3"><img src="{{c_hr.jpg}}" alt=""><i>08</i><span>Подбор персонала</span></div>
+        <div class="b rv d4"><img src="{{c_mkt.jpg}}" alt=""><i>09</i><span>Маркетинг</span></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. STANDARDS -->
+<section class="slide s10" data-n="10">
+  <div class="left">
+    <div class="n rv">10</div>
+    <h2 class="rv d1">Единые стандарты сети и удобный софт</h2>
+    <div class="kick rv d1">от Калининграда до Владивостока</div>
+    <p class="cap rv d2">Вы управляете станцией по цифрам, а не по ощущениям</p>
+    <img class="rv d2" src="{{imac.jpg}}" alt="Дашборд управления станцией">
+  </div>
+  <div class="right">
+    <ol class="rv d2">
+      <li><b>01</b><span>бренд-бук</span></li>
+      <li><b>02</b><span>регламент обслуживания автомобилей</span></li>
+      <li><b>03</b><span>регламент обслуживания клиентов</span></li>
+      <li><b>04</b><span>регламент ведения и учета кассовых операций</span></li>
+      <li><b>05</b><span>регламент складского учета</span></li>
+      <li><b>06</b><span>должностные инструкции</span></li>
+      <li><b>07</b><span>система мотивации персонала и орг. структур</span></li>
+      <li><b>08</b><span>инструкции по охране труда, подбору персонала</span></li>
+      <li><b>09</b><span>технологические карты ремонта</span></li>
+      <li><b>10</b><span>описание программы лояльности</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 11. SUPPORT CHAT -->
+<section class="slide s11" data-n="11">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div style="color:#3a3a3a;font-family:'Oswald','Arial Narrow',Arial,sans-serif;font-size:clamp(40px,4.6vw,72px);font-weight:500;line-height:1" class="rv">11</div>
+        <h2 class="rv d1">Поддержка</h2>
+        <p class="sub rv d1">ваша команда не останется один на один с техническими трудностями при обслуживании авто</p>
+        <div class="avail rv d2">Вам будут доступны</div>
+        <div class="it rv d2"><b>01</b><span>техническая поддержка по обслуживанию авто</span></div>
+        <div class="it rv d3"><b>02</b><span>служба помощи в подборе запасных частей</span></div>
+        <div class="it rv d4"><b>03</b><span>служба заботы о клиентах</span></div>
+      </div>
+      <div class="phone rv d2"><img src="{{phone_chat.webp}}" alt="Чат технической поддержки"></div>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus bl">+</span>
+</section>
+
+<!-- 12. QUESTIONS -->
+<section class="slide s12" data-n="12">
+  <div class="wrap">
+    <h2 class="rv">Ответим на все<br>ваши вопросы</h2>
+    <p class="sub rv d1">четыре вопроса, которые задаёт каждый будущий партнёр</p>
+    <div class="grid">
+      <div class="gradcard q rv d1"><b>01</b><span>Как происходит открытие?</span></div>
+      <div class="gradcard q rv d2"><b>02</b><span>Сколько средств требуется на открытие?</span></div>
+      <div class="gradcard q rv d3"><b>03</b><span>Кто и как подбирает помещение?</span></div>
+      <div class="gradcard q rv d4"><b>04</b><span>Какая поддержка оказывается партнёрам?</span></div>
+    </div>
+    <div class="cta-row rv d4">
+      <button class="btn" id="ctaContacts">Свяжитесь с нашими менеджерами</button>
+      <span class="note">контакты отдела развития — на следующем слайде</span>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus br">+</span>
+</section>
+
+<!-- 13. TEAM -->
+<section class="slide s13" data-n="13">
+  <div class="wrap">
+    <h2 class="rv">Отдел развития FIT SERVICE</h2>
+    <p class="sub rv d1">свяжитесь с менеджером вашего региона — ответим на все вопросы о франшизе</p>
+    <div class="grid">
+      <div class="card rv d1">
+        <img src="{{team1.jpg}}" alt="Павел Коровин">
+        <div class="reg">Регионы РФ: Москва и М.О., ДВФО</div>
+        <div class="nm">Павел Коровин</div>
+        <div class="ct">
+          <a class="tel" href="tel:+79618717044" data-goal="click_phone" data-mgr="korovin">+7 961 871-70-44</a>
+          <a href="mailto:korovin.p.n@rossko.ru" data-goal="click_email" data-mgr="korovin">korovin.p.n@rossko.ru</a>
+          <a href="https://franch.fitauto.ru" target="_blank" rel="noopener" data-goal="click_site" data-mgr="korovin">franch.fitauto.ru</a>
+        </div>
+      </div>
+      <div class="card rv d2">
+        <img src="{{team2.jpg}}" alt="Алексей Казачкин">
+        <div class="reg">Регионы РФ: ПФО, СЗФО, ЮФО</div>
+        <div class="nm">Алексей Казачкин</div>
+        <div class="ct">
+          <a class="tel" href="tel:+79628368402" data-goal="click_phone" data-mgr="kazachkin">+7 962 836-84-02</a>
+          <a href="mailto:a.kazachkin@fitauto.ru" data-goal="click_email" data-mgr="kazachkin">a.kazachkin@fitauto.ru</a>
+          <a href="https://franch.fitauto.ru" target="_blank" rel="noopener" data-goal="click_site" data-mgr="kazachkin">franch.fitauto.ru</a>
+        </div>
+      </div>
+      <div class="card rv d3">
+        <img src="{{team3.jpg}}" alt="Юрий Партала">
+        <div class="reg">Регионы РФ: СФО, ЦФО, СКФО, УФО</div>
+        <div class="nm">Юрий Партала</div>
+        <div class="ct">
+          <a class="tel" href="tel:+79618717047" data-goal="click_phone" data-mgr="partala">+7 961 871-70-47</a>
+          <a href="mailto:partala.y.a@fitauto.ru" data-goal="click_email" data-mgr="partala">partala.y.a@fitauto.ru</a>
+          <a href="https://t.me/fitmng" target="_blank" rel="noopener" data-goal="click_telegram" data-mgr="partala">t.me/fitmng</a>
+        </div>
+      </div>
+      <div class="card rv d4">
+        <img src="{{team4.jpg}}" alt="Елназ Бегалы">
+        <div class="reg">Республика Казахстан</div>
+        <div class="nm">Елназ Бегалы</div>
+        <div class="ct">
+          <a class="tel" href="tel:+77474387929" data-goal="click_phone" data-mgr="begaly">+7 747 438-79-29</a>
+          <a href="mailto:begaly.e.e@fitauto.ru" data-goal="click_email" data-mgr="begaly">begaly.e.e@fitauto.ru</a>
+          <a href="https://franch.fitauto.ru" target="_blank" rel="noopener" data-goal="click_site" data-mgr="begaly">franch.fitauto.ru</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot rv d4">
+      <span>FIT SERVICE — автосервис №1 в России и Казахстане</span>
+      <span>Франшиза · 2026</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- 14. ANKETA -->
+<section class="slide s14" data-n="14">
+  <div class="wrap">
+    <div class="kick14 rv">Следующий шаг</div>
+    <h2 class="rv d1">Будьте на шаг <em>впереди</em></h2>
+    <p class="sub rv d1">Заполните анкету партнёра заранее — это ускорит процесс, а разговор с менеджером станет предметным.</p>
+    <div class="panel">
+      <div class="gradcard pt rv d2"><b>01</b><div><h4>Расчёт бизнес-плана</h4><p>подготовим расчёт бизнес-плана под ваши данные: город, помещение, бюджет</p></div></div>
+      <div class="gradcard pt rv d3"><b>02</b><div><h4>Экономия времени</h4><p>менеджер свяжется с вами уже подготовленным — сразу перейдём к цифрам и условиям открытия персонально под вас</p></div></div>
+    </div>
+    <div class="cta-row rv d4">
+      <a class="btn" id="ankBtn" href="#" target="_blank" rel="noopener">Заполнить анкету партнёра</a>
+      <span class="note">это займёт несколько минут — данные попадут напрямую в отдел развития</span>
+    </div>
+  </div>
+  <span class="plus tl">+</span><span class="plus br">+</span>
+</section>
+
+</main>
+
+<script>
+/* ================= Yandex.Metrika =================
+   1) Создайте счётчик в metrika.yandex.ru
+   2) Замените XXXXXXXX ниже на номер счётчика
+   3) В настройках счётчика включите Вебвизор
+=================================================== */
+var METRIKA_ID = 'XXXXXXXX'; // <-- номер счётчика Яндекс.Метрики
+var ANKETA_URL = 'https://presentation.fitmng.ru/anketa.html'; // <-- ссылка на анкету партнёра
+
+(function(m,e,t,r,i,k,a){
+  if(!/^\d+$/.test(String(METRIKA_ID))) return; // заглушка не активирует счётчик
+  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0];
+  k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
+})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+
+if(/^\d+$/.test(String(METRIKA_ID))){
+  ym(METRIKA_ID,'init',{
+    clickmap:true, trackLinks:true, accurateTrackBounce:true,
+    webvisor:true, trackHash:true
+  });
+}
+function track(goal, params){
+  try{
+    if(typeof ym==='function' && /^\d+$/.test(String(METRIKA_ID))){
+      ym(METRIKA_ID,'reachGoal',goal,params||{});
+    }
+    if(window.console && console.debug) console.debug('[goal]',goal,params||'');
+  }catch(e){}
+}
+
+/* ================= deck logic ================= */
+var deck = document.getElementById('deck');
+var slides = [].slice.call(document.querySelectorAll('.slide'));
+var progress = document.getElementById('progress');
+var dots = document.getElementById('dots');
+var hint = document.getElementById('hint');
+var total = slides.length;
+var seen = {};
+var current = 1;
+
+slides.forEach(function(s,i){
+  var a = document.createElement('a');
+  a.href = 'javascript:void(0)';
+  a.title = 'Слайд ' + (i+1);
+  a.addEventListener('click', function(){ goTo(i); });
+  dots.appendChild(a);
+});
+var dotEls = [].slice.call(dots.children);
+
+function goTo(i){
+  slides[i].scrollIntoView({behavior:'smooth'});
+}
+
+function pad(n){ return (n<10?'0':'')+n; }
+
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    var n = parseInt(en.target.getAttribute('data-n'),10);
+    var vis = en.isIntersecting && (en.intersectionRatio >= 0.55 ||
+              en.intersectionRect.height >= deck.clientHeight * 0.5);
+    if(vis){
+      en.target.classList.add('seen');
+      current = n;
+      progress.style.width = (n/total*100) + '%';
+      document.body.classList.toggle('lightbg', en.target.hasAttribute('data-light'));
+      dotEls.forEach(function(d,i){ d.classList.toggle('on', i===n-1); });
+      if(n>1) hint.style.display='none';
+      if(!seen[n]){
+        seen[n] = true;
+        track('slide_' + n, {slide:n});
+        if(n === total){ track('deck_finished'); }
+      }
+    }
+  });
+},{root:deck, threshold:[0.15,0.35,0.55,0.75]});
+slides.forEach(function(s){ io.observe(s); });
+
+/* keyboard navigation */
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowDown' || e.key==='PageDown' || e.key===' '){
+    e.preventDefault(); if(current<total) goTo(current); /* current is 1-based; index of next = current */
+  }
+  if(e.key==='ArrowUp' || e.key==='PageUp'){
+    e.preventDefault(); if(current>1) goTo(current-2);
+  }
+  if(e.key==='Home'){ e.preventDefault(); goTo(0); }
+  if(e.key==='End'){ e.preventDefault(); goTo(total-1); }
+});
+
+/* CTA to contacts */
+document.getElementById('ctaContacts').addEventListener('click', function(){
+  track('cta_contacts');
+  goTo(12); /* слайд 13 — контакты */
+});
+
+/* anketa button */
+var ank = document.getElementById('ankBtn');
+ank.setAttribute('href', ANKETA_URL);
+ank.addEventListener('click', function(){ track('anketa_click'); });
+
+/* contact clicks */
+[].slice.call(document.querySelectorAll('[data-goal]')).forEach(function(a){
+  a.addEventListener('click', function(){
+    track(a.getAttribute('data-goal'), {manager: a.getAttribute('data-mgr')||''});
+    track('contact_click', {manager: a.getAttribute('data-mgr')||'', type: a.getAttribute('data-goal')});
+  });
+});
+</script>
+</body>
+</html>
