@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Франшиза FIT SERVICE — автосервис №1 в России и Казахстане</title>
 <meta name="description" content="Презентация франшизы FIT SERVICE: 346 станций, 168 городов, 2 700 000 клиентов. Как открыть автосервис под брендом №1.">
+<link rel="icon" type="image/png" href="{{favicon.png}}">
+<link rel="apple-touch-icon" href="{{apple-touch.png}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -310,13 +312,21 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
 /* ---------- phone landscape ---------- */
 @media (max-height:500px) and (orientation:landscape){
   .slide{height:auto;min-height:100svh}
-  .deck{scroll-snap-type:y proximity}
+  .deck{scroll-snap-type:none}
 }
 
 /* ---------- mobile ---------- */
 @media (max-width:880px), (max-width:1040px) and (orientation:portrait){
-  .deck{scroll-snap-type:y proximity}
-  .slide{height:auto;min-height:100svh}
+  /* прокрутку ведёт сама страница, без снапа: иначе на телефонах
+     снап борется с инерцией пальца и листание подвисает */
+  html,body{height:auto;overflow-x:hidden}
+  .deck{scroll-snap-type:none;height:auto;overflow:visible}
+  .slide{
+    height:auto;min-height:100svh;
+    scroll-snap-align:none;scroll-snap-stop:normal;
+    content-visibility:auto;contain-intrinsic-size:auto 100svh;
+  }
+  .rv{transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
   .wrap{padding:76px 22px 60px}
   .dots,.hint{display:none}
   .chrome{padding:14px 18px;font-size:11px}
@@ -335,6 +345,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .s4 .band .in{padding:0 22px}
   .s5 .phone{height:auto;display:flex;justify-content:center}
   .s5 .phone img{position:static;width:min(88%,420px);margin-bottom:-16vh}
+  .s7 .phones{height:auto}
   .s7 .phones img{height:auto;max-height:64vh}
   .s6 .lgrid{grid-template-columns:repeat(2,1fr)}
   .s6 .lc{height:88px}
@@ -383,7 +394,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   </div>
   <div class="right">
     <div class="art">
-      <img src="{{wheel.jpg}}" alt="FIT SERVICE" class="rv d1">
+      <img decoding="async" src="{{wheel.jpg}}" alt="FIT SERVICE" class="rv d1">
       <div class="plate rv d2">FIT SERVICE</div>
     </div>
     <div class="stats rv d3"><b>346 станций</b><i>·</i><b>168 городов</b><i>·</i><b>2 700 000 клиентов</b></div>
@@ -448,10 +459,10 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
     </div>
   </div>
   <div class="cards">
-    <div class="c rv d1"><div class="n">01</div><h4>Инновации в сфере</h4><p>все диагностики авто с фото и видеоотчетом</p><img src="{{ph_diag.jpg}}" alt="Диагностика"></div>
-    <div class="c rv d2"><div class="n">02</div><h4>Мобильное приложение</h4><p>9 из 10 клиентов пользуются мобильным приложением</p><img src="{{ph_app.jpg}}" alt="Приложение"></div>
-    <div class="c rv d3"><div class="n">03</div><h4>Цифровое управление</h4><p>софт позволяет управлять бизнесом из любой точки мира</p><img src="{{ph_car.jpg}}" alt="Управление"></div>
-    <div class="c rv d4"><div class="n">04</div><h4>Онлайн обучение</h4><p>возможность обучать сотрудников даже удаленно</p><img src="{{ph_edu.jpg}}" alt="Обучение"></div>
+    <div class="c rv d1"><div class="n">01</div><h4>Инновации в сфере</h4><p>все диагностики авто с фото и видеоотчетом</p><img loading="lazy" decoding="async" src="{{ph_diag.jpg}}" alt="Диагностика"></div>
+    <div class="c rv d2"><div class="n">02</div><h4>Мобильное приложение</h4><p>9 из 10 клиентов пользуются мобильным приложением</p><img loading="lazy" decoding="async" src="{{ph_app.jpg}}" alt="Приложение"></div>
+    <div class="c rv d3"><div class="n">03</div><h4>Цифровое управление</h4><p>софт позволяет управлять бизнесом из любой точки мира</p><img loading="lazy" decoding="async" src="{{ph_car.jpg}}" alt="Управление"></div>
+    <div class="c rv d4"><div class="n">04</div><h4>Онлайн обучение</h4><p>возможность обучать сотрудников даже удаленно</p><img loading="lazy" decoding="async" src="{{ph_edu.jpg}}" alt="Обучение"></div>
   </div>
 </section>
 
@@ -469,7 +480,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
           <div class="st rv d4"><b>более 80 000</b><span>клиентов каждый месяц доверяют нам свой автомобиль</span></div>
         </div>
       </div>
-      <div class="phone rv d2"><img src="{{phone_blue.webp}}" alt="FIT SERVICE в соцсетях"></div>
+      <div class="phone rv d2"><img loading="lazy" decoding="async" src="{{phone_blue.webp}}" alt="FIT SERVICE в соцсетях"></div>
     </div>
   </div>
   <span class="plus tl">+</span><span class="plus bl">+</span>
@@ -482,22 +493,22 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
     <h2 class="rv d1">Клиенты приходят из популярных приложений</h2>
     <p class="sub rv d1">Услуги FIT SERVICE встроены в экосистемы банков, АЗС, страховых и онлайн-сервисов. Это дополнительный поток клиентов на вашу станцию, который вам не нужно покупать.</p>
     <div class="lgrid rv d2">
-      <div class="lc"><img src="{{lg_gazpromneft.webp}}" alt="Газпромнефть"></div>
-      <div class="lc"><img src="{{lg_tbank.webp}}" alt="Т-Банк"></div>
-      <div class="lc"><img src="{{lg_rosneft.webp}}" alt="Роснефть"></div>
-      <div class="lc"><img src="{{lg_autospot.webp}}" alt="Autospot"></div>
-      <div class="lc"><img src="{{lg_yandexpro.webp}}" alt="Яндекс Про"></div>
-      <div class="lc"><img src="{{lg_vtb.webp}}" alt="ВТБ"></div>
-      <div class="lc"><img src="{{lg_flocktory.webp}}" alt="Flocktory"></div>
-      <div class="lc"><img src="{{lg_lukoil.webp}}" alt="Лукойл"></div>
-      <div class="lc"><img src="{{lg_vsk.webp}}" alt="ВСК"></div>
-      <div class="lc"><img src="{{lg_t2.webp}}" alt="t2"></div>
-      <div class="lc"><img src="{{lg_gazprombonus.webp}}" alt="Газпром Бонус"></div>
-      <div class="lc"><img src="{{lg_alfabank.webp}}" alt="Альфа-Банк"></div>
-      <div class="lc"><img src="{{lg_halva.webp}}" alt="Халва"></div>
-      <div class="lc"><img src="{{lg_x5.webp}}" alt="X5 Group"></div>
-      <div class="lc"><img src="{{lg_houmbank.webp}}" alt="Хоум Банк"></div>
-      <div class="lc"><img src="{{lg_insapp.webp}}" alt="Insapp"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_gazpromneft.webp}}" alt="Газпромнефть"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_tbank.webp}}" alt="Т-Банк"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_rosneft.webp}}" alt="Роснефть"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_autospot.webp}}" alt="Autospot"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_yandexpro.webp}}" alt="Яндекс Про"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_vtb.webp}}" alt="ВТБ"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_flocktory.webp}}" alt="Flocktory"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_lukoil.webp}}" alt="Лукойл"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_vsk.webp}}" alt="ВСК"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_t2.webp}}" alt="t2"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_gazprombonus.webp}}" alt="Газпром Бонус"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_alfabank.webp}}" alt="Альфа-Банк"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_halva.webp}}" alt="Халва"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_x5.webp}}" alt="X5 Group"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_houmbank.webp}}" alt="Хоум Банк"></div>
+      <div class="lc"><img loading="lazy" decoding="async" src="{{lg_insapp.webp}}" alt="Insapp"></div>
     </div>
   </div>
 </section>
@@ -513,7 +524,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         <div class="st rv d2"><b>+41%</b><span>средний чек при использовании бонусной системы</span></div>
         <div class="st rv d3"><b>4,8</b><span>рейтинг приложения при 4 400+ оценках</span></div>
       </div>
-      <div class="phones rv d2"><img src="{{phone_garage.webp}}" alt="Приложение FIT SERVICE"></div>
+      <div class="phones rv d2"><img loading="lazy" decoding="async" src="{{phone_garage.webp}}" alt="Приложение FIT SERVICE"></div>
     </div>
   </div>
   <span class="plus tl">+</span><span class="plus bl">+</span>
@@ -525,12 +536,12 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
     <span class="crumb">Почему у вас получится?</span>
     <div class="n rv">08</div>
     <h2 class="rv d1">Запчасти всегда в наличии</h2>
-    <img class="rossko rv d2" src="{{rossko.png}}" alt="ROSSKO">
+    <img class="rossko rv d2" loading="lazy" decoding="async" src="{{rossko.png}}" alt="ROSSKO">
     <p class="cap rv d2">прямой канал поставки запасных частей от крупнейшего дистрибьютора</p>
     <div class="big rv d3">1 500 000</div>
     <span class="rv d3">наименований запчастей всегда в наличии</span>
   </div>
-  <div class="right"><img src="{{warehouse.jpg}}" alt="Склад ROSSKO"></div>
+  <div class="right"><img loading="lazy" decoding="async" src="{{warehouse.jpg}}" alt="Склад ROSSKO"></div>
 </section>
 
 <!-- 9. SUPPORT MAP -->
@@ -542,7 +553,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         <h2 class="rv d1">Поддержка на всех этапах</h2>
         <p class="sub rv d1">Управляющая компания FIT SERVICE — бизнес-партнер, который берет на себя ответственность и обязанности, не имея доли в вашем бизнесе</p>
         <div class="owner rv d2">
-          <img src="{{owner.jpg}}" alt="Владелец FIT SERVICE">
+          <img loading="lazy" decoding="async" src="{{owner.jpg}}" alt="Владелец FIT SERVICE">
           <div><b>Владелец FIT SERVICE</b><span>вы — в центре всей системы поддержки</span></div>
         </div>
       </div>
@@ -552,15 +563,15 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         <path class="dash s9road-anim" d="M 2 12 H 82 C 97 12 97 46 82 46 H 18 C 3 46 3 80 18 80 H 98"/>
       </svg>
       <div class="grid">
-        <div class="b rv d1"><img src="{{c_consult.jpg}}" alt=""><i>01</i><span>Личный бизнес-консультант</span></div>
-        <div class="b rv d1"><img src="{{c_tech.jpg}}" alt=""><i>02</i><span>Техническая служба</span></div>
-        <div class="b rv d2"><img src="{{c_merch.jpg}}" alt=""><i>03</i><span>Производство фирменной атрибутики</span></div>
-        <div class="b rv d2"><img src="{{c_care.jpg}}" alt=""><i>04</i><span>Служба заботы о клиентах</span></div>
-        <div class="b rv d2"><img src="{{c_edu.jpg}}" alt=""><i>05</i><span>Центр обучения</span></div>
-        <div class="b rv d3"><img src="{{c_call.jpg}}" alt=""><i>06</i><span>Контакт-центр</span></div>
-        <div class="b rv d3"><img src="{{c_it.jpg}}" alt=""><i>07</i><span>Разработка IT-инфраструктуры</span></div>
-        <div class="b rv d3"><img src="{{c_hr.jpg}}" alt=""><i>08</i><span>Подбор персонала</span></div>
-        <div class="b rv d4"><img src="{{c_mkt.jpg}}" alt=""><i>09</i><span>Маркетинг</span></div>
+        <div class="b rv d1"><img loading="lazy" decoding="async" src="{{c_consult.jpg}}" alt=""><i>01</i><span>Личный бизнес-консультант</span></div>
+        <div class="b rv d1"><img loading="lazy" decoding="async" src="{{c_tech.jpg}}" alt=""><i>02</i><span>Техническая служба</span></div>
+        <div class="b rv d2"><img loading="lazy" decoding="async" src="{{c_merch.jpg}}" alt=""><i>03</i><span>Производство фирменной атрибутики</span></div>
+        <div class="b rv d2"><img loading="lazy" decoding="async" src="{{c_care.jpg}}" alt=""><i>04</i><span>Служба заботы о клиентах</span></div>
+        <div class="b rv d2"><img loading="lazy" decoding="async" src="{{c_edu.jpg}}" alt=""><i>05</i><span>Центр обучения</span></div>
+        <div class="b rv d3"><img loading="lazy" decoding="async" src="{{c_call.jpg}}" alt=""><i>06</i><span>Контакт-центр</span></div>
+        <div class="b rv d3"><img loading="lazy" decoding="async" src="{{c_it.jpg}}" alt=""><i>07</i><span>Разработка IT-инфраструктуры</span></div>
+        <div class="b rv d3"><img loading="lazy" decoding="async" src="{{c_hr.jpg}}" alt=""><i>08</i><span>Подбор персонала</span></div>
+        <div class="b rv d4"><img loading="lazy" decoding="async" src="{{c_mkt.jpg}}" alt=""><i>09</i><span>Маркетинг</span></div>
       </div>
       </div>
     </div>
@@ -574,7 +585,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
     <h2 class="rv d1">Единые стандарты сети и удобный софт</h2>
     <div class="kick rv d1">от Калининграда до Владивостока</div>
     <p class="cap rv d2">Вы управляете станцией по цифрам, а не по ощущениям</p>
-    <img class="rv d2" src="{{imac.jpg}}" alt="Дашборд управления станцией">
+    <img class="rv d2" loading="lazy" decoding="async" src="{{imac.jpg}}" alt="Дашборд управления станцией">
   </div>
   <div class="right">
     <ol class="rv d2">
@@ -605,7 +616,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         <div class="it rv d3"><b>02</b><span>служба помощи в подборе запасных частей</span></div>
         <div class="it rv d4"><b>03</b><span>служба заботы о клиентах</span></div>
       </div>
-      <div class="phone rv d2"><img src="{{phone_chat.webp}}" alt="Чат технической поддержки"></div>
+      <div class="phone rv d2"><img loading="lazy" decoding="async" src="{{phone_chat.webp}}" alt="Чат технической поддержки"></div>
     </div>
   </div>
   <span class="plus tl">+</span><span class="plus bl">+</span>
@@ -637,7 +648,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
     <p class="sub rv d1">свяжитесь с менеджером вашего региона — ответим на все вопросы о франшизе</p>
     <div class="grid">
       <div class="card rv d1">
-        <img src="{{team1.jpg}}" alt="Павел Коровин">
+        <img loading="lazy" decoding="async" src="{{team1.jpg}}" alt="Павел Коровин">
         <div class="reg">Регионы РФ: Москва и М.О., ДВФО</div>
         <div class="nm">Павел Коровин</div>
         <div class="ct">
@@ -647,7 +658,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         </div>
       </div>
       <div class="card rv d2">
-        <img src="{{team2.jpg}}" alt="Алексей Казачкин">
+        <img loading="lazy" decoding="async" src="{{team2.jpg}}" alt="Алексей Казачкин">
         <div class="reg">Регионы РФ: ПФО, СЗФО, ЮФО</div>
         <div class="nm">Алексей Казачкин</div>
         <div class="ct">
@@ -657,7 +668,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         </div>
       </div>
       <div class="card rv d3">
-        <img src="{{team3.jpg}}" alt="Юрий Партала">
+        <img loading="lazy" decoding="async" src="{{team3.jpg}}" alt="Юрий Партала">
         <div class="reg">Регионы РФ: СФО, ЦФО, СКФО, УФО</div>
         <div class="nm">Юрий Партала</div>
         <div class="ct">
@@ -667,7 +678,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
         </div>
       </div>
       <div class="card rv d4">
-        <img src="{{team4.jpg}}" alt="Елназ Бегалы">
+        <img loading="lazy" decoding="async" src="{{team4.jpg}}" alt="Елназ Бегалы">
         <div class="reg">Республика Казахстан</div>
         <div class="nm">Елназ Бегалы</div>
         <div class="ct">
@@ -766,7 +777,7 @@ var io = new IntersectionObserver(function(entries){
   entries.forEach(function(en){
     var n = parseInt(en.target.getAttribute('data-n'),10);
     var vis = en.isIntersecting && (en.intersectionRatio >= 0.55 ||
-              en.intersectionRect.height >= deck.clientHeight * 0.5);
+              en.intersectionRect.height >= window.innerHeight * 0.5);
     if(vis){
       en.target.classList.add('seen');
       current = n;
@@ -781,7 +792,7 @@ var io = new IntersectionObserver(function(entries){
       }
     }
   });
-},{root:deck, threshold:[0.15,0.35,0.55,0.75]});
+},{root:null, threshold:[0.15,0.35,0.55,0.75]});
 slides.forEach(function(s){ io.observe(s); });
 
 /* keyboard navigation */
