@@ -324,7 +324,6 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .slide{
     height:auto;min-height:100svh;
     scroll-snap-align:none;scroll-snap-stop:normal;
-    content-visibility:auto;contain-intrinsic-size:auto 100svh;
   }
   .rv{transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
   .wrap{padding:76px 22px 60px}
@@ -357,7 +356,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .s7 .phones img{height:auto;max-height:64vh}
   .s6 .lgrid{grid-template-columns:repeat(2,1fr)}
   .s6 .lc{height:88px}
-  .s9 .road{display:none}
+  .s9 .road .base{stroke-width:20px}
   .s8{grid-template-columns:1fr}
   .s8 .left{padding:86px 24px 40px}
   .s8 .crumb{display:none}
@@ -367,6 +366,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .s9 .owner img{width:96px}
   .s10{grid-template-columns:1fr}
   .s10 .left{padding:86px 24px 34px}
+  .s10 img{width:100%}
   .s10 .right{padding:34px 24px 46px}
   .s11 .phone img{height:auto;max-height:64vh}
   .s12 .grid{grid-template-columns:1fr;gap:14px}
@@ -374,6 +374,7 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .s12 .q{min-height:0;gap:18px}
   .s13 .grid{grid-template-columns:1fr 1fr;gap:14px}
   .card .reg{min-height:0}
+  .card img{width:min(100%,280px);margin:0 auto 14px}
 }
 @media (max-width:520px){
   .s13 .grid{grid-template-columns:1fr}
