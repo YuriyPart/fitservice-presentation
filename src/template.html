@@ -329,9 +329,11 @@ body.lightbg .dots a{background:rgba(0,0,0,.25)}
   .wrap{padding:76px 22px 60px}
   .dots,.hint,.plus{display:none}
   .chrome{padding:14px 18px;font-size:11px}
+  .chrome{position:fixed}
+  .chrome .mid{position:absolute;left:50%;transform:translateX(-50%)}
   .s1{grid-template-columns:1fr;min-height:100svh}
   .s1 .left{padding:86px 24px 30px;justify-content:center}
-  .s1 .left h1{text-align:center}
+  .s1 .left h1{text-align:center;font-size:clamp(34px,10.2vw,44px)}
   .s1 .plate{left:0;top:12%;font-size:30px;padding:10px 26px}
   .s1 .art{padding:0;align-items:flex-start}
   .s1 .art img{width:min(88%,480px);margin:4px -3% 0 auto}
